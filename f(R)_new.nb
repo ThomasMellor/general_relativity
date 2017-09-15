@@ -1,0 +1,1092 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     39363,       1084]
+NotebookOptionsPosition[     37319,       1024]
+NotebookOutlinePosition[     37652,       1039]
+CellTagsIndexPosition[     37609,       1036]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"\[CapitalGamma]", "^", "i_jk"}], " ", "component", " ", "of", 
+    " ", "the", " ", "Christoffel", " ", "symbol"}], " ", "*)"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.70879177658914*^9, 3.708791794938986*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Cristoffel", "[", 
+   RowBox[{"g_", ",", "coor_", ",", "i_", ",", "j_", ",", "k_"}], "]"}], ":=",
+   " ", 
+  RowBox[{"Simplify", "@", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "l", "}"}], ",", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"1", "/", "2"}], "*", 
+        RowBox[{
+         RowBox[{"Inverse", "[", "g", "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "l"}], "]"}], "]"}], "*", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"D", "[", 
+           RowBox[{
+            RowBox[{"g", "[", 
+             RowBox[{"[", 
+              RowBox[{"l", ",", "k"}], "]"}], "]"}], ",", 
+            RowBox[{"coor", "[", 
+             RowBox[{"[", "j", "]"}], "]"}]}], "]"}], "+", 
+          RowBox[{"D", "[", 
+           RowBox[{
+            RowBox[{"g", "[", 
+             RowBox[{"[", 
+              RowBox[{"l", ",", "j"}], "]"}], "]"}], ",", 
+            RowBox[{"coor", "[", 
+             RowBox[{"[", "k", "]"}], "]"}]}], "]"}], "-", 
+          RowBox[{"D", "[", 
+           RowBox[{
+            RowBox[{"g", "[", 
+             RowBox[{"[", 
+              RowBox[{"j", ",", "k"}], "]"}], "]"}], ",", 
+            RowBox[{"coor", "[", 
+             RowBox[{"[", "l", "]"}], "]"}]}], "]"}]}], ")"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"l", ",", "1", ",", 
+         RowBox[{"Length", "[", "g", "]"}]}], "}"}]}], "]"}]}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.708791802932476*^9, 3.708791803876423*^9}, {
+  3.708942811053748*^9, 3.708942823754636*^9}, {3.7089499643389187`*^9, 
+  3.7089499758846693`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "Full", " ", "table", " ", "of", " ", "Christoffel", " ", "symbol"}], 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.708791809604073*^9, 3.708791819349831*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.708942829804138*^9, 3.708942830699182*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[CapitalGamma]", "[", 
+   RowBox[{"g_", ",", "coor_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Simplify", "@", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Cristoffel", "[", 
+      RowBox[{"g", ",", "coor", ",", "i", ",", "j", ",", "k"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "g", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", 
+       RowBox[{"Length", "[", "g", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", 
+       RowBox[{"Length", "[", "g", "]"}]}], "}"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.708791822701058*^9, 3.70879182402798*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Christoffel", " ", "matrix", " ", "display"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.7087918563610363`*^9, 3.708791896523282*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DisplayChristoffelMatrices", "[", 
+   RowBox[{"g_", ",", " ", "coor_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"m", " ", "=", " ", 
+       RowBox[{"\[CapitalGamma]", "[", 
+        RowBox[{"g", ",", "coor"}], "]"}]}], ",", "j"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", " ", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Print", "[", 
+        RowBox[{"\[CapitalGamma]", "^", 
+         RowBox[{"coor", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], " ", "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+         RowBox[{"m", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], " ", "//", " ", "MatrixForm"}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", " ", "\"\<\>\"", "]"}], ";"}], 
+      "\[IndentingNewLine]", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", " ", 
+        RowBox[{"Length", "[", "coor", "]"}]}], "}"}]}], "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7087919146272697`*^9, 3.708791919291205*^9}, {
+  3.708949740755287*^9, 3.7089497460440903`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"R", "^", "c_bad"}], " ", "component", " ", "of", " ", "the", " ", 
+   "Riemann", " ", "tensor"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.708792105211746*^9, 3.708792116608059*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RiemannComp", "[", 
+   RowBox[{
+   "coor_", ",", "\[CapitalGamma]_", ",", " ", "c_", ",", "b_", ",", "a_", 
+    ",", "d_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "f", "}"}], ",", 
+    RowBox[{"Total", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"\[CapitalGamma]", "[", 
+          RowBox[{"[", 
+           RowBox[{"c", ",", "d", ",", "b"}], "]"}], "]"}], ",", 
+         RowBox[{"coor", "[", 
+          RowBox[{"[", "a", "]"}], "]"}]}], "]"}], ",", 
+       RowBox[{"-", 
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"\[CapitalGamma]", "[", 
+           RowBox[{"[", 
+            RowBox[{"c", ",", "a", ",", "b"}], "]"}], "]"}], ",", 
+          RowBox[{"coor", "[", 
+           RowBox[{"[", "d", "]"}], "]"}]}], "]"}]}], " ", ",", 
+       RowBox[{"+", " ", 
+        RowBox[{"Sum", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"\[CapitalGamma]", "[", 
+             RowBox[{"[", 
+              RowBox[{"f", ",", "d", ",", "b"}], "]"}], "]"}], "*", 
+            RowBox[{"\[CapitalGamma]", "[", 
+             RowBox[{"[", 
+              RowBox[{"c", ",", "a", ",", "f"}], "]"}], "]"}]}], "-", 
+           RowBox[{
+            RowBox[{"\[CapitalGamma]", "[", 
+             RowBox[{"[", 
+              RowBox[{"f", ",", "a", ",", "b"}], "]"}], "]"}], "*", 
+            RowBox[{"\[CapitalGamma]", "[", 
+             RowBox[{"[", 
+              RowBox[{"c", ",", "d", ",", "f"}], "]"}], "]"}]}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"f", ",", "1", ",", 
+            RowBox[{"Length", "[", "coor", "]"}]}], "}"}]}], "]"}]}]}], "}"}],
+      "]"}]}], " ", "]"}]}]], "Input",
+ CellChangeTimes->{{3.70879214211803*^9, 3.708792145231682*^9}, {
+  3.708792368656979*^9, 3.708792381408248*^9}, {3.708942884362582*^9, 
+  3.708942891762169*^9}, {3.7089429925214367`*^9, 3.708942993263579*^9}, {
+  3.708949982899562*^9, 3.708949988353424*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Full", " ", "Riemann", " ", "tensor", " ", "table"}], 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.708792128987257*^9, 3.7087921342946978`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Riemann", "[", 
+   RowBox[{"coor_", ",", "\[CapitalGamma]_"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"l", ",", "i", ",", "j", ",", "k"}], "}"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"RiemannComp", "[", 
+        RowBox[{
+        "coor", ",", "\[CapitalGamma]", ",", "l", ",", "i", ",", "j", ",", 
+         "k"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"l", ",", "1", ",", 
+         RowBox[{"Length", "[", "coor", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", "coor", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "1", ",", 
+         RowBox[{"Length", "[", "coor", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", "1", ",", 
+         RowBox[{"Length", "[", "coor", "]"}]}], "}"}]}], "]"}]}], " ", "]"}],
+    " ", "//", " ", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.7087921374072323`*^9, 3.708792154799286*^9}, {
+  3.708792374783485*^9, 3.708792377533334*^9}, {3.708942851651575*^9, 
+  3.7089428764784613`*^9}, {3.7089430261303253`*^9, 3.708943028710724*^9}, {
+  3.708943064149293*^9, 3.708943075309927*^9}, {3.708949993625242*^9, 
+  3.708950007080661*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"Display", "'"}], "s", " ", "non", " ", "zero", " ", "Riemann", 
+   " ", "tensor", " ", "components"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.7087921688969927`*^9, 3.708792177847866*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DisplayRiemann", "[", 
+   RowBox[{"coor_", ",", "\[CapitalGamma]_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"d", ",", "e", ",", "f"}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"d", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Subscript", "[", 
+            RowBox[{
+             RowBox[{"R", "^", 
+              RowBox[{"coor", "[", 
+               RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+             RowBox[{"Row", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"coor", "[", 
+                 RowBox[{"[", "j", "]"}], "]"}], ",", 
+                RowBox[{"coor", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], ",", 
+                RowBox[{"coor", "[", 
+                 RowBox[{"[", "l", "]"}], "]"}]}], "}"}], "]"}]}], "]"}], ",", 
+           RowBox[{"RiemannComp", "[", 
+            RowBox[{
+            "coor", ",", "\[CapitalGamma]", ",", "i", ",", "j", ",", "k", ",",
+              "l"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "coor", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "1", ",", 
+           RowBox[{"Length", "[", "coor", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "1", ",", 
+           RowBox[{"Length", "[", "coor", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"l", ",", "1", ",", 
+           RowBox[{"Length", "[", "coor", "]"}]}], "}"}]}], "]"}]}], ";", 
+      RowBox[{"e", "=", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{
+         RowBox[{"Delete", "[", 
+          RowBox[{"d", ",", 
+           RowBox[{"Transpose", "[", 
+            RowBox[{"Most", "[", 
+             RowBox[{"Transpose", "[", 
+              RowBox[{"Position", "[", 
+               RowBox[{"d", ",", "0"}], "]"}], "]"}], "]"}], "]"}]}], "]"}], 
+         ",", "2"}], "]"}]}], ";", 
+      RowBox[{"f", "=", " ", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{
+         RowBox[{"Select", "[", 
+          RowBox[{"e", ",", 
+           RowBox[{
+            RowBox[{"UnsameQ", "[", 
+             RowBox[{"#", ",", 
+              RowBox[{"{", "}"}]}], "]"}], "&"}]}], "]"}], ",", "1"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", " ", 
+      RowBox[{"MatrixForm", "[", 
+       RowBox[{"Partition", "[", 
+        RowBox[{"f", ",", "4"}], "]"}], "]"}]}]}], "]"}], " ", "//", 
+   "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.7087921860577717`*^9, 3.708792197976328*^9}, {
+  3.7087923470102882`*^9, 3.708792354046528*^9}, {3.708793642718231*^9, 
+  3.708793645076167*^9}, {3.708943103015764*^9, 3.708943123932585*^9}, {
+  3.708943539634885*^9, 3.708943570168497*^9}, {3.708950015472568*^9, 
+  3.708950027985821*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "R_ij", " ", "component", " ", "of", " ", "the", " ", "Ricci", " ", 
+   "tensor"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.70879222603409*^9, 3.7087922323169947`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RicciTensorComp", "[", 
+   RowBox[{"riem_", ",", "i_", ",", "j_"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "l", "}"}], ",", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{"riem", "[", 
+        RowBox[{"[", 
+         RowBox[{"l", ",", "i", ",", "l", ",", "j"}], "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"l", ",", "1", ",", 
+         RowBox[{"Length", "[", 
+          RowBox[{"riem", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}], 
+    "]"}], "//", " ", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.70888203509795*^9, 3.708882041818666*^9}, {
+  3.708942915982567*^9, 3.708942925551744*^9}, {3.708949805714747*^9, 
+  3.708949806603043*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "Full", " ", "Ricci", " ", "tensor", " ", "and", " ", "displaying", " ", 
+   "it"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.708792257879759*^9, 3.7087922636948223`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RicciT", "[", "riem_", "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", "j"}], "}"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"RicciTensorComp", "[", 
+        RowBox[{"riem", ",", "i", ",", "j"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", 
+          RowBox[{"riem", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "1", ",", 
+         RowBox[{"Length", "[", 
+          RowBox[{"riem", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "1"}], "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}], 
+    "]"}], "//", " ", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.7087922663440847`*^9, 3.7087922664782047`*^9}, 
+   3.708792305105134*^9, {3.708882048249753*^9, 3.7088820659131804`*^9}, {
+   3.708945075723665*^9, 3.708945086805131*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DisplayRicciTensor", "[", "riem_", "]"}], " ", ":=", 
+  RowBox[{
+   RowBox[{"RicciT", "[", "riem", "]"}], "//", "   ", 
+   "MatrixForm"}]}]], "Input",
+ CellChangeTimes->{{3.708792269592101*^9, 3.708792269756681*^9}, 
+   3.708792309136609*^9, {3.708882103593478*^9, 3.7088821057050657`*^9}, {
+   3.7089500390025663`*^9, 3.708950039672544*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Ricci", " ", "scalar"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.7087922964663897`*^9, 3.7087923011818542`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"R", "[", 
+   RowBox[{"g_", ",", "Ric_"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", "j"}], "}"}], ",", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"Inverse", "[", "g", "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "j"}], "]"}], "]"}], "*", 
+        RowBox[{"Ric", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "j"}], "]"}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", "g", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "1", ",", 
+         RowBox[{"Length", "[", "g", "]"}]}], "}"}]}], "]"}]}], "]"}], " ", "//",
+    " ", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.708945095638556*^9, 3.708945106606373*^9}, {
+  3.708950048265753*^9, 3.7089500513901033`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Einstein", " ", "tensor", " ", "component"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.7087924917180767`*^9, 3.708792498131733*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EinsteinTensorComp", "[", 
+   RowBox[{"g_", ",", "ric_", ",", "i_", ",", "j_"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"ric", "[", 
+    RowBox[{"[", 
+     RowBox[{"i", ",", "j"}], "]"}], "]"}], "-", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "/", "2"}], ")"}], "*", 
+    RowBox[{"g", "[", 
+     RowBox[{"[", 
+      RowBox[{"i", ",", "j"}], "]"}], "]"}], "*", 
+    RowBox[{"R", "[", 
+     RowBox[{"g", ",", "ric"}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.708950062781068*^9, 3.708950081129381*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"Full", " ", "Einstein", " ", "Tensor"}], " ", "+", " ", 
+   "display"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.708792478078483*^9, 3.708792489211385*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Einstein", "[", 
+   RowBox[{"g_", ",", "ric_"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", "j"}], "}"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"EinsteinTensorComp", "[", 
+        RowBox[{"g", ",", "ric", ",", "i", ",", "j"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", "g", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "1", ",", 
+         RowBox[{"Length", "[", "g", "]"}]}], "}"}]}], "]"}]}], "]"}], " ", "//",
+    " ", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.707297709605974*^9, 3.707297762794414*^9}, {
+  3.707297806878405*^9, 3.707297809782352*^9}, {3.708792500630684*^9, 
+  3.708792502492579*^9}, {3.708945112699237*^9, 3.708945120245326*^9}, {
+  3.7089500706501226`*^9, 3.7089500739688597`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplayEinteinTensor", "[", 
+    RowBox[{"g_", ",", "ric_"}], "]"}], ":=", " ", 
+   RowBox[{
+    RowBox[{"Einstein", "[", 
+     RowBox[{"g", ",", "ric"}], "]"}], "//", " ", "MatrixForm"}]}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.7072977653168507`*^9, 3.7072977970469427`*^9}, 
+   3.707301061716145*^9, {3.708792508558032*^9, 3.708792509603435*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Scalar", " ", "covariant", " ", "derivative"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.7089392934452477`*^9, 3.708939300089531*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ScalarCovDerivative", "[", 
+   RowBox[{"f_", ",", "coor_"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "k", "}"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"D", "[", 
+        RowBox[{"f", ",", 
+         RowBox[{"coor", "[", 
+          RowBox[{"[", "k", "]"}], "]"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", "1", ",", 
+         RowBox[{"Length", "[", "coor", "]"}]}], "}"}]}], "]"}]}], "]"}], " ",
+    "//", " ", "Simplify", " "}]}]], "Input",
+ CellChangeTimes->{{3.708792794165408*^9, 3.708792827706974*^9}, {
+  3.708792931904675*^9, 3.7087929449578943`*^9}, {3.708932671180203*^9, 
+  3.7089326720296173`*^9}, {3.7089389389890213`*^9, 3.708938946326273*^9}, {
+  3.708945174573802*^9, 3.708945181011629*^9}, {3.7089658061502867`*^9, 
+  3.70896580829597*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Covriant", " ", "derivative", " ", "of", " ", "a", " ", 
+   RowBox[{"(", 
+    RowBox[{"0", ",", "1"}], ")"}], " ", "tensor"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.708939303396447*^9, 3.708939320664091*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"TensorCovDerivative", "[", 
+   RowBox[{"f_", ",", "coor_", ",", "\[CapitalGamma]_"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"s", ",", "i", ",", "j"}], "}"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"f", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], ",", 
+          RowBox[{"coor", "[", 
+           RowBox[{"[", "j", "]"}], "]"}]}], "]"}], " ", "-", " ", 
+        RowBox[{"Sum", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"\[CapitalGamma]", "[", 
+            RowBox[{"[", 
+             RowBox[{"s", ",", "i", ",", "j"}], "]"}], "]"}], "*", 
+           RowBox[{"f", "[", 
+            RowBox[{"[", "s", "]"}], "]"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", 
+            RowBox[{"Length", "[", "coor", "]"}]}], "}"}]}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", 
+         RowBox[{"Length", "[", "g", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Length", "[", "g", "]"}]}], "}"}]}], "]"}]}], "]"}], " ", "//",
+    " ", "Simplify", " "}]}]], "Input",
+ CellChangeTimes->{{3.708792829984514*^9, 3.7087929095828342`*^9}, {
+  3.7087930308166857`*^9, 3.7087930569227858`*^9}, {3.70879313005513*^9, 
+  3.708793148383101*^9}, {3.7087954930036087`*^9, 3.7087954971940393`*^9}, {
+  3.708938931703166*^9, 3.7089389368646927`*^9}, {3.708945183570094*^9, 
+  3.708945192267172*^9}, {3.708945260493381*^9, 3.7089452608344812`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Covariant", " ", "derivative", " ", "of", " ", "a", " ", 
+   RowBox[{"(", 
+    RowBox[{"0", ",", "2"}], ")"}], " ", "tensor"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.708939323997919*^9, 3.7089393528897467`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Tensor2CovDerivative", "[", 
+   RowBox[{"f_", ",", "coor_", ",", "\[CapitalGamma]_"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", "j", ",", "k", ",", "s"}], "}"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"f", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "j"}], "]"}], "]"}], ",", 
+          RowBox[{"coor", "[", 
+           RowBox[{"[", "k", "]"}], "]"}]}], "]"}], "-", 
+        RowBox[{"Sum", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"\[CapitalGamma]", "[", 
+             RowBox[{"[", 
+              RowBox[{"s", ",", "i", ",", "k"}], "]"}], "]"}], "*", 
+            RowBox[{"f", "[", 
+             RowBox[{"[", 
+              RowBox[{"s", ",", "j"}], "]"}], "]"}]}], "+", 
+           RowBox[{
+            RowBox[{"\[CapitalGamma]", "[", 
+             RowBox[{"[", 
+              RowBox[{"s", ",", "j", ",", "k"}], "]"}], "]"}], "*", 
+            RowBox[{"f", "[", 
+             RowBox[{"[", 
+              RowBox[{"i", ",", "s"}], "]"}], "]"}]}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"s", ",", 
+            RowBox[{"Length", "[", "coor", "]"}]}], "}"}]}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", "1", ",", 
+         RowBox[{"Length", "[", "coor", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", "coor", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "1", ",", 
+         RowBox[{"Length", "[", "coor", "]"}]}], "}"}]}], "]"}]}], "]"}], " ",
+    "//", "Simplify", " "}]}]], "Input",
+ CellChangeTimes->{{3.7087930790548897`*^9, 3.708793088733637*^9}, {
+  3.7087931528713903`*^9, 3.7087932524956017`*^9}, {3.708793548246539*^9, 
+  3.70879356009728*^9}, {3.708795507553362*^9, 3.708795511741356*^9}, {
+  3.708798044252351*^9, 3.708798044474545*^9}, {3.708801426137388*^9, 
+  3.708801440250388*^9}, {3.7088021380980577`*^9, 3.708802144371072*^9}, {
+  3.70880273998938*^9, 3.708802751075848*^9}, {3.708802825280498*^9, 
+  3.708802837845346*^9}, {3.7088028750980377`*^9, 3.708802966911208*^9}, {
+  3.708803017909792*^9, 3.708803032558876*^9}, {3.7088034660158157`*^9, 
+  3.708803471589171*^9}, {3.7089389222205133`*^9, 3.7089389288905582`*^9}, {
+  3.708945198405431*^9, 3.708945209187455*^9}, {3.708945257557559*^9, 
+  3.70894525801768*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Contracted", " ", "covariant", " ", "derivative", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"i", ".", "e"}], " ", 
+     RowBox[{"\[Del]", "^", "\[Mu]F_\[Mu]"}]}], ")"}]}], " ", "*)"}]], "Input",\
+
+ CellChangeTimes->{{3.708939360465386*^9, 3.708939365543542*^9}, {
+   3.708939503136098*^9, 3.7089395739368553`*^9}, 3.7089396187647943`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CntdTensorCovDev", "[", 
+   RowBox[{"f_", ",", "g_", ",", "coor_", ",", "\[CapitalGamma]_"}], "]"}], ":=",
+   " ", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k", ",", "j"}], "}"}], ",", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"Inverse", "[", "g", "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"k", ",", "j"}], "]"}], "]"}], "*", 
+        RowBox[{
+         RowBox[{"TensorCovDerivative", "[", 
+          RowBox[{"f", ",", "coor", ",", "\[CapitalGamma]"}], "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"k", ",", "j"}], "]"}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", 
+         RowBox[{"Length", "[", "g", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", 
+         RowBox[{"Length", "[", "g", "]"}]}], "}"}]}], "]"}]}], "]"}], " ", "//",
+    " ", "Simplify", " "}]}]], "Input",
+ CellChangeTimes->{{3.7087933331237183`*^9, 3.708793415549285*^9}, {
+  3.708793500252693*^9, 3.70879350198836*^9}, {3.708793542186097*^9, 
+  3.708793544090373*^9}, {3.708938897927565*^9, 3.708938904237966*^9}, {
+  3.708945212005497*^9, 3.708945256720867*^9}, {3.7089501635126247`*^9, 
+  3.708950171158889*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"f", 
+   RowBox[{"(", "R", ")"}], " ", "field", " ", "equation"}], "*)"}]], "Input",\
+
+ CellChangeTimes->{{3.708939624383458*^9, 3.708939629436167*^9}, {
+  3.708939674556946*^9, 3.7089396764798326`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"fRFieldEquation", "[", 
+    RowBox[{
+    "f_", ",", "g_", ",", "coor_", ",", "\[CapitalGamma]_", ",", "Ric_", ",", 
+     "R_"}], "]"}], ":=", " ", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"i", ",", "j"}], "}"}], ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"f", "'"}], "[", "R", "]"}], "*", 
+          RowBox[{"Ric", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "j"}], "]"}], "]"}]}], " ", "-", 
+         RowBox[{
+          RowBox[{"1", "/", "2"}], 
+          RowBox[{"f", "[", "R", "]"}], "*", 
+          RowBox[{"g", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "j"}], "]"}], "]"}]}], " ", "+", 
+         RowBox[{
+          RowBox[{"g", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "j"}], "]"}], "]"}], "*", 
+          RowBox[{"CntdTensorCovDev", "[", 
+           RowBox[{
+            RowBox[{"ScalarCovDerivative", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"f", "'"}], "[", "R", "]"}], ",", "coor"}], "]"}], ",",
+             "g", ",", "coor", ",", "\[CapitalGamma]"}], "]"}]}], "-", 
+         RowBox[{
+          RowBox[{"TensorCovDerivative", "[", 
+           RowBox[{
+            RowBox[{"ScalarCovDerivative", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"f", "'"}], "[", "R", "]"}], ",", "coor"}], "]"}], ",",
+             "coor", ",", "\[CapitalGamma]"}], "]"}], "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "j"}], "]"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{"Length", "[", "coor", "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", 
+          RowBox[{"Length", "[", "coor", "]"}]}], "}"}]}], "]"}]}], "]"}], 
+    " ", "//", " ", "Simplify"}]}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.708793272122368*^9, 3.708793323437418*^9}, {
+   3.708793420491886*^9, 3.708793498212203*^9}, {3.70879353485283*^9, 
+   3.708793535268386*^9}, {3.708793565475192*^9, 3.708793609364077*^9}, {
+   3.708795551001401*^9, 3.708795574101345*^9}, {3.7087960266757708`*^9, 
+   3.7087961402525167`*^9}, {3.708796202790655*^9, 3.7087962082489977`*^9}, {
+   3.708796253618457*^9, 3.708796276480403*^9}, {3.7087963233681183`*^9, 
+   3.7087963258712254`*^9}, 3.708796356863049*^9, {3.7087970190071*^9, 
+   3.708797043008421*^9}, {3.708797127993021*^9, 3.708797128150017*^9}, {
+   3.708798634082429*^9, 3.7087986415865393`*^9}, 3.708799163977953*^9, {
+   3.708803254599806*^9, 3.708803255044055*^9}, {3.708938911744854*^9, 
+   3.708938911935052*^9}, {3.70893968584794*^9, 3.708939686180434*^9}, {
+   3.708945232123085*^9, 3.708945254057304*^9}, {3.708950180263196*^9, 
+   3.708950193921454*^9}, {3.7089502890079527`*^9, 3.708950291877707*^9}, {
+   3.708950639497058*^9, 3.708950645992468*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fRFieldEquation2", "[", 
+   RowBox[{
+   "f_", ",", "g_", ",", "coor_", ",", "\[CapitalGamma]_", ",", "Ric_", ",", 
+    "R_", ",", "RS_"}], "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", "j"}], "}"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"f", "'"}], "[", "R", "]"}], "*", 
+         RowBox[{"Ric", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "j"}], "]"}], "]"}]}], " ", "-", 
+        RowBox[{
+         RowBox[{"1", "/", "4"}], 
+         RowBox[{
+          RowBox[{"f", "'"}], "[", "R", "]"}], "*", "RS", "*", 
+         RowBox[{"g", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "j"}], "]"}], "]"}]}], " ", "+", 
+        RowBox[{
+         RowBox[{"1", "/", "4"}], 
+         RowBox[{"g", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "j"}], "]"}], "]"}], "*", 
+         RowBox[{"CntdTensorCovDev", "[", 
+          RowBox[{
+           RowBox[{"ScalarCovDerivative", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"f", "'"}], "[", "R", "]"}], ",", "coor"}], "]"}], ",", 
+           "g", ",", "coor", ",", "\[CapitalGamma]"}], "]"}]}], "-", 
+        RowBox[{
+         RowBox[{"TensorCovDerivative", "[", 
+          RowBox[{
+           RowBox[{"ScalarCovDerivative", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"f", "'"}], "[", "R", "]"}], ",", "coor"}], "]"}], ",", 
+           "coor", ",", "\[CapitalGamma]"}], "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "j"}], "]"}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Length", "[", "coor", "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", 
+         RowBox[{"Length", "[", "coor", "]"}]}], "}"}]}], "]"}]}], "]"}], " ",
+    "//", " ", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.708959312943356*^9, 3.708959330898678*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Contracted", " ", "covariant", " ", "derivative", " ", "of", " ", 
+   RowBox[{"(", 
+    RowBox[{"0", ",", "2"}], ")"}], " ", 
+   RowBox[{"tensor", ":", " ", 
+    RowBox[{"\[Del]", "^", "\[Mu]T_\[Mu]\[Nu]"}]}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.708939693378869*^9, 3.708939773757605*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DivTensor2CovDerivative", "[", 
+   RowBox[{"f_", ",", "g_", ",", "coor_", ",", "\[CapitalGamma]_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k", ",", "j", ",", "i"}], "}"}], ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Sum", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"Inverse", "[", "g", "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "j"}], "]"}], "]"}], "*", 
+          RowBox[{
+           RowBox[{"Tensor2CovDerivative", "[", 
+            RowBox[{"f", ",", "coor", ",", "\[CapitalGamma]"}], "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"k", ",", "j", ",", "i"}], "]"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", 
+           RowBox[{"Length", "[", "coor", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", 
+           RowBox[{"Length", "[", "coor", "]"}]}], "}"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Length", "[", "coor", "]"}]}], "}"}]}], "]"}]}], "]"}], " ",
+    "//", " ", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.708939817235306*^9, 3.708939826414324*^9}, {
+  3.708939882266513*^9, 3.708939900562806*^9}, {3.708939934642145*^9, 
+  3.708939938109975*^9}, {3.7089452411898518`*^9, 3.70894526960812*^9}, {
+  3.7089502183040533`*^9, 3.708950220679076*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "Contracted", " ", "divergence", " ", "of", " ", "the", " ", "field", " ", 
+   "equation"}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.7089402320830307`*^9, 3.7089402671506653`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DivfRFieldEquation", "[", 
+   RowBox[{
+   "f_", ",", "g_", ",", "coor_", ",", "\[CapitalGamma]_", ",", "Ric_", ",", 
+    "R_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"DivTensor2CovDerivative", "[", 
+    RowBox[{
+     RowBox[{"fRFieldEquation", "[", 
+      RowBox[{
+      "f", ",", "g", ",", "coor", ",", "\[CapitalGamma]", ",", "Ric", ",", 
+       "R"}], "]"}], ",", "coor", ",", "g", ",", "\[CapitalGamma]"}], "]"}], 
+   " ", "//", " ", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.708795274687289*^9, 3.708795410681903*^9}, {
+   3.708795604868689*^9, 3.708795696651371*^9}, {3.7087961726491528`*^9, 
+   3.708796215108314*^9}, {3.708796280949494*^9, 3.708796287023808*^9}, {
+   3.7088020457208548`*^9, 3.708802046566264*^9}, 3.708939804231077*^9, {
+   3.7089400451725817`*^9, 3.708940069392242*^9}, {3.708945279299168*^9, 
+   3.7089452807451267`*^9}, {3.7089502457699337`*^9, 3.708950295615478*^9}, {
+   3.7089507896480713`*^9, 3.708950792981032*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Contracted", " ", "f", 
+   RowBox[{"(", "R", ")"}], " ", "field", " ", "equation"}], " ", 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.708940283289719*^9, 3.708940287053947*^9}, {
+  3.7089403758393993`*^9, 3.708940378796536*^9}, {3.708940895160818*^9, 
+  3.708940900422514*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CnrtFieldEquation", "[", 
+   RowBox[{
+   "f_", ",", "g_", ",", "coor_", ",", "\[CapitalGamma]_", ",", "R_"}], "]"}],
+   ":=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"2", "*", 
+     RowBox[{
+      RowBox[{"f", "[", "R", "]"}], "/", 
+      RowBox[{
+       RowBox[{"f", "'"}], "[", "R", "]"}]}]}], " ", "-", 
+    RowBox[{"3", "*", 
+     RowBox[{
+      RowBox[{"CntdTensorCovDev", "[", 
+       RowBox[{
+        RowBox[{"ScalarCovDerivative", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"f", "'"}], "[", "R", "]"}], ",", "coor"}], "]"}], ",", 
+        "g", ",", "coor", ",", "\[CapitalGamma]"}], "]"}], "/", 
+      RowBox[{
+       RowBox[{"f", "'"}], "[", "R", "]"}]}]}]}], " ", "//", 
+   "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.708797161419035*^9, 3.70879725365969*^9}, {
+  3.708945275483573*^9, 3.7089452772654457`*^9}, {3.7089453363718243`*^9, 
+  3.7089453372523613`*^9}, {3.7089453686564693`*^9, 3.7089453982159977`*^9}, {
+  3.708950317465746*^9, 3.708950358767879*^9}, {3.708950949875021*^9, 
+  3.7089509524304447`*^9}, {3.708953721819563*^9, 3.7089537251728373`*^9}, {
+  3.708953953468536*^9, 3.708953954808708*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Euler", " ", "lagrange", " ", "equation", " ", "of", " ", "f", 
+   RowBox[{"(", "R", ")"}], " ", "lagrangian", " ", "density"}], " ", 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.708945345171192*^9, 3.7089453564165907`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EulerLagrange", "[", 
+   RowBox[{"f_", ",", "g_", ",", "coors_", ",", "R_", ",", "r_", ",", "n_"}], 
+   "]"}], ":=", " ", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"detg", " ", "=", " ", 
+        RowBox[{"Sqrt", "[", 
+         RowBox[{"-", 
+          RowBox[{"Det", "[", "g", "]"}]}], "]"}]}], ",", "i", ",", "k"}], 
+      "}"}], ",", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"f", "[", "R", "]"}], "*", "detg"}], ",", " ", 
+          RowBox[{"coors", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], "]"}], " ", "+", 
+        RowBox[{"Sum", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"-", "1"}], ")"}], "^", "k"}], "*", 
+           RowBox[{"D", "[", 
+            RowBox[{
+             RowBox[{"D", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"f", "[", "R", "]"}], "*", "detg"}], ",", 
+               RowBox[{"D", "[", 
+                RowBox[{
+                 RowBox[{"coors", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"r", ",", "k"}], "}"}]}], "]"}]}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"r", ",", "k"}], "}"}]}], "]"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"k", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", "coors", "]"}]}], "}"}]}], "]"}]}], "]"}], 
+   " ", "//", " ", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.708945287736813*^9, 3.7089453341904507`*^9}, {
+  3.708950373381823*^9, 3.708950411925952*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\[AliasDelimiter]"], "Input",
+ CellChangeTimes->{3.7091393974837914`*^9}],
+
+Cell[BoxData["\[AliasDelimiter]"], "Output",
+ CellChangeTimes->{{3.71336338613023*^9, 3.713363388315136*^9}, 
+   3.713373339176971*^9, 3.713872203080192*^9, 3.7138764389513903`*^9, 
+   3.7139668775402527`*^9, 3.714036317544426*^9}]
+}, Open  ]]
+},
+WindowSize->{926, 1028},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 302, 7, 52, "Input"],
+Cell[863, 29, 1634, 46, 152, "Input"],
+Cell[2500, 77, 199, 5, 32, "Input"],
+Cell[2702, 84, 92, 1, 30, "Input"],
+Cell[2797, 87, 677, 18, 57, "Input"],
+Cell[3477, 107, 173, 3, 32, "Input"],
+Cell[3653, 112, 1227, 32, 176, "Input"],
+Cell[4883, 146, 234, 5, 33, "Input"],
+Cell[5120, 153, 2012, 52, 74, "Input"],
+Cell[7135, 207, 183, 4, 32, "Input"],
+Cell[7321, 213, 1308, 32, 81, "Input"],
+Cell[8632, 247, 241, 5, 32, "Input"],
+Cell[8876, 254, 2873, 74, 198, "Input"],
+Cell[11752, 330, 211, 5, 33, "Input"],
+Cell[11966, 337, 812, 22, 59, "Input"],
+Cell[12781, 361, 213, 5, 32, "Input"],
+Cell[12997, 368, 1022, 27, 83, "Input"],
+Cell[14022, 397, 377, 8, 35, "Input"],
+Cell[14402, 407, 153, 3, 32, "Input"],
+Cell[14558, 412, 930, 27, 80, "Input"],
+Cell[15491, 441, 172, 3, 32, "Input"],
+Cell[15666, 446, 547, 16, 35, "Input"],
+Cell[16216, 464, 209, 5, 32, "Input"],
+Cell[16428, 471, 925, 23, 80, "Input"],
+Cell[17356, 496, 417, 10, 55, "Input"],
+Cell[17776, 508, 174, 3, 32, "Input"],
+Cell[17953, 513, 883, 22, 54, "Input"],
+Cell[18839, 537, 251, 5, 32, "Input"],
+Cell[19093, 544, 1605, 40, 81, "Input"],
+Cell[20701, 586, 254, 5, 32, "Input"],
+Cell[20958, 593, 2508, 59, 126, "Input"],
+Cell[23469, 654, 386, 9, 35, "Input"],
+Cell[23858, 665, 1273, 33, 81, "Input"],
+Cell[25134, 700, 243, 6, 32, "Input"],
+Cell[25380, 708, 2952, 68, 175, "Input"],
+Cell[28335, 778, 2015, 56, 155, "Input"],
+Cell[30353, 836, 336, 7, 33, "Input"],
+Cell[30692, 845, 1443, 36, 105, "Input"],
+Cell[32138, 883, 228, 5, 32, "Input"],
+Cell[32369, 890, 989, 20, 59, "Input"],
+Cell[33361, 912, 317, 7, 32, "Input"],
+Cell[33681, 921, 1180, 30, 78, "Input"],
+Cell[34864, 953, 263, 5, 32, "Input"],
+Cell[35130, 960, 1827, 51, 105, "Input"],
+Cell[CellGroupData[{
+Cell[36982, 1015, 87, 1, 30, "Input"],
+Cell[37072, 1018, 231, 3, 30, "Output"]
+}, Open  ]]
+}
+]
+*)
+
